@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Havannah Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Havannah Game</h1>
+
+    <!-- NEW WRAPPER DIV TO CENTER THE GAME -->
+    <div class="game-container">
+        <div class="controls">
+            <label for="dimension-selector">Board Size:</label>
+            <select id="dimension-selector">
+                <option value="3">3</option>
+                <option value="4" selected>4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+
+        <div class="controls">
+            <button id="new-game-vs-ai">Play With Computer</button>
+            <button id="new-game-vs-friend">Play With Friend</button>
+            <button id="new-game-vs-random">Play With Lame-Brain</button>
+            <button id="reset-game-btn">Reset Game</button>
+        </div>
+
+        <div id="status">Welcome! Choose a board size and start a new game.</div>
+        
+        <div id="board-container">
+            <!-- The SVG board will be generated here by JavaScript -->
+            <svg id="game-board"></svg>
+        </div>
+    </div>
+    <!-- END OF THE NEW WRAPPER DIV -->
+
+
+    <div class="how-to-play">
+        <h2>Winning Criteria</h2>
+        <p>A win is declared when a player is successful in making any of the following three structures described below:</p>
+
+        <div class="criteria-container">
+            <div class="criterion">
+                <h3>Bridge</h3>
+                <img src="{{ url_for('static', filename='bridge.png') }}" alt="Bridge winning condition">
+            </div>
+            <div class="criterion">
+                <h3>Fork</h3>
+                <img src="{{ url_for('static', filename='fork.png') }}" alt="Fork winning condition">
+            </div>
+            <div class="criterion">
+                <h3>Ring</h3>
+                <img src="{{ url_for('static', filename='ring.png') }}" alt="Ring winning condition">
+            </div>
+        </div>
+
+        <ul class="criteria-descriptions">
+            <li>A <strong>Fork</strong> in Havannah occurs when three (or more) different edges of the board are connected through a path of adjacent, same-coloured cells. A cell is considered part of an edge if it lies on the boundary of the board but is not a corner.</li>
+            <li>A <strong>Bridge</strong> is a path (a sequence of adjacent, same-coloured cells) that connects any two corners of the board. Note that there are 6 corners on any given board.</li>
+            <li>A <strong>Ring</strong> is defined as a closed, cyclical path of same-coloured cells which must enclose one or more cells inside it. Note that the cell(s) inside the enclosure can be either the player's or the opponent's or an empty block.</li>
+        </ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
